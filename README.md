@@ -4,6 +4,7 @@ Het doel van deze opdracht is om Pokémon in het wild te kunnen vangen en toe te
 
 ### Start
 - Clone deze app
+- Run `docker compose up -d` om een MySQL database te starten
 - Run `bin/rails db:create` en `bin/rails db:migrate`
 - Start de terminal en run `Import::Processor.run` om alle Pokémon in te laden
 - Run `bin/rails db:seed` om trainer Ash Ketchum met Pikachu als Pokémon aan te maken
