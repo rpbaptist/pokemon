@@ -19,3 +19,6 @@ Bumping Ruby to 3.4.10 cascaded into several dependent fixes:
 
 I don't run databases on my local machine. Adding a `docker-compose.yml` file allows any user to run the database in a Docker container, without breaking other local setups. Removing the `socket` definition allows this setup to work on environments other than MacOS with brew.
 
+## Update `POKEMON_API_URI`
+
+v7 from the `.env` file was no longer functioning. Moving to v8 solved that issue.
