@@ -1,0 +1,10 @@
+<div class="card-actions">
+  <% if battle.escaped? %>
+    <p>You escaped!</p>
+  <% else %>
+    <% if escaped == false %>
+      <p>Escape failed &mdash; try again.</p>
+    <% end %>
+    <%= button_to "Escape", battle_escape_attempt_path(battle), method: :post, class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -13,11 +13,10 @@
           <h2 class="card-title text-center">
             <%= @battle.trainer.name %> VS <%= @battle.opponent.name %>
           </h2>
-          <p>Implement the actual battle.</p>
           <div class="divider"></div>
-          <div class="card-actions">
-            <button class="btn btn-primary">Do something</button>
-          </div>
+          <%= turbo_frame_tag dom_id(@battle, :actions) do %>
+            <%= render "battles/actions", battle: @battle, escaped: nil %>
+          <% end %>
         </div>
       </div>
     </div>
