@@ -22,3 +22,10 @@ I don't run databases on my local machine. Adding a `docker-compose.yml` file al
 ## Update `POKEMON_API_URI`
 
 v7 from the `.env` file was no longer functioning. Moving to v8 solved that issue.
+
+## Battle action attempts always return 200
+
+Since an escape from a battle can fail, I considered returning a `417` or `422` response in case of failure, but that
+goes against REST expectations and I decided against it. Instead I opted for calling the resource an `EscapeAttempt`.
+The attempt will always be created, but can have different outcomes.
+
