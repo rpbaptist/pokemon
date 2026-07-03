@@ -1,13 +1,15 @@
 class RandomPokemon
   class << self
-    def retrieve
+    def retrieve(pokemon = nil)
       sample_base_pokemon = BasePokemon.all.sample
 
       return if sample_base_pokemon.nil?
 
+      level = determine_level(pokemon)
+
       sample_base_pokemon.pokemons.create(
         trainer: nil,
-        level: 1,
+        level: level,
         hp: 1,
         attack: 1,
         special_attack: 1,
@@ -23,6 +25,16 @@ class RandomPokemon
         current_experience: 0,
         experience_to_level: 0
       )
+    end
+
+    private
+
+    def determine_level(pokemon)
+      if pokemon
+        rand([pokemon.level - 3, 1].max..(pokemon.level + 3))
+      else
+        rand(1..4)
+      end
     end
   end
 end

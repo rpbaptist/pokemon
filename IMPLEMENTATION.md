@@ -5,10 +5,10 @@
 ### 1.a
 
 - [x] Default trainer present as `current_trainer`
-- [ ] Use `current_trainer.pokemons.highest_level` or `current_trainer.highest_level_pokemon`. 
-- [ ] Pokemon in encounter may not be more than 3 levels higher or lower than `highest_level_pokemon`
+- [x] Use `current_trainer.pokemons.highest_level`.
+- [x] Pokemon in encounter may not be more than 3 levels higher or lower than `highest_level_pokemon`
    `RandomPokemon.retrieve` should take argument `pokemon` and compare levels before retrieving. If no argument is
-given, it should show a random pokemon of level 1-3 only. 
+given, it should show a random pokemon of level 1-4 (i.e. treated as base level 1, clamped ±3). 
 
 ### 1.b
 
