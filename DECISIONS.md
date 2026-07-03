@@ -32,3 +32,18 @@ The attempt will always be created, but can have different outcomes.
 ## Added standardrb for linting
 
 Add standardrb for a no-setup linting tool
+
+## Pokemon stat calculation
+
+The README file states two requirements relating to pokemon stats based on levels. None of the existing documentation or
+code accommodates that. I asked AI for the official Pokemon stat formula:
+
+Real Pokémon games compute this from base stat, IV, EV, and Nature — none of which this schema models. The real Gen 3+ formula with IV = 0, EV = 0, and Nature neutral is:
+
+```
+HP    = floor(2 * base * level / 100) + level + 10
+other = floor(2 * base * level / 100) + 5
+```
+
+This will be added in `BasePokemon#stat_at_level`.
+

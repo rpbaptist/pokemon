@@ -12,7 +12,12 @@ given, it should show a random pokemon of level 1-4 (i.e. treated as base level 
 
 ### 1.b
 
-- [ ] When creating the pokemon from `base_pokemon` in `RandomPokemon` the stats need to be leveled up accordingly.
+- [ ] Add `BasePokemon#stat_at_level(stat_name, level)`, using the official formula with IV/EV/Nature treated as neutral 
+   - `hp`: `floor(2 * base * level / 100) + level + 10`
+   - all other stats: `floor(2 * base * level / 100) + 5`
+- [ ] In `RandomPokemon.retrieve`, replace the hardcoded `1`s with `sample_base_pokemon.stat_at_level(stat, level)` for each of `hp`, `attack`, `special_attack`, `defense`, `special_defense`, `speed`
+- [ ] `current_*` stats are set equal to the freshly calculated stat (full health/full stats on spawn, same precedent as `db/seeds.rb`'s Pikachu)
+- [ ] Update `spec/models/random_pokemon_spec.rb` to give `BasePokemon` fixtures real base stats instead of relying on `nil` columns
 
 ## Acceptance criteria 2
 
