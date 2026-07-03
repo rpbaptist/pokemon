@@ -83,6 +83,9 @@ group :development do
 
   # Run tests for modified files
   gem 'guard-rspec', require: false
+
+  # Ruby style guide, linter, and formatter
+  gem 'standard', require: false
 end
 
 group :test do
