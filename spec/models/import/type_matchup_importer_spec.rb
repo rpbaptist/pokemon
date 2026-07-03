@@ -45,13 +45,13 @@ module Import
       end
 
       before do
-        allow(::TypeMatchup).
-          to receive(:primary_types).
-          and_return("grass" => "grass", "rock" => "rock")
+        allow(::TypeMatchup)
+          .to receive(:primary_types)
+          .and_return("grass" => "grass", "rock" => "rock")
 
-        allow(PokemonApi::Graphql::V7::Requests::TypeMatchups).
-          to receive(:retrieve).
-          and_return(response)
+        allow(PokemonApi::Graphql::V7::Requests::TypeMatchups)
+          .to receive(:retrieve)
+          .and_return(response)
       end
 
       it "creates a type matchup for each primary type" do

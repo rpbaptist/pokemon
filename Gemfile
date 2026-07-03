@@ -43,7 +43,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -58,7 +58,7 @@ gem "httparty"
 gem "pagy", "~> 5.10"
 
 # State Machine
-gem 'aasm'
+gem "aasm"
 
 group :development, :test do
   # Debugging tool
@@ -68,7 +68,7 @@ group :development, :test do
   gem "dotenv-rails", groups: [:development, :test]
 
   # Test framework
-  gem 'rspec-rails', '~> 6.0.0'
+  gem "rspec-rails", "~> 6.0.0"
 end
 
 group :development do
@@ -82,10 +82,10 @@ group :development do
   # gem "spring"
 
   # Run tests for modified files
-  gem 'guard-rspec', require: false
+  gem "guard-rspec", require: false
 
   # Ruby style guide, linter, and formatter
-  gem 'standard', require: false
+  gem "standard", require: false
 end
 
 group :test do

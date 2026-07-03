@@ -31,9 +31,9 @@ class BattlesController < ApplicationController
   private
 
   def battle_params
-    params.
-      require(:battle).
-      permit(
+    params
+      .require(:battle)
+      .permit(
         :battle_type,
         :opponent_id,
         :trainer_id

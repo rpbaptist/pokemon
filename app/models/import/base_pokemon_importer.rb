@@ -89,7 +89,7 @@ module Import
             z_move_power: api_move["zMovePower"],
             generation: api_level_up_move["generation"],
             level: api_level_up_move["level"],
-            pokemon_type: api_move["type"],
+            pokemon_type: api_move["type"]
           )
 
           pokemon.moves << move

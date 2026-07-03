@@ -29,3 +29,6 @@ Since an escape from a battle can fail, I considered returning a `417` or `422` 
 goes against REST expectations and I decided against it. Instead I opted for calling the resource an `EscapeAttempt`.
 The attempt will always be created, but can have different outcomes.
 
+## Added standardrb for linting
+
+Add standardrb for a no-setup linting tool

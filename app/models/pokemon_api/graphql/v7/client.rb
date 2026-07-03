@@ -10,8 +10,8 @@ module PokemonApi
           def query(query)
             post(
               "/",
-              body: { query: query }.to_json,
-              headers: { "Content-Type": "application/json" }
+              body: {query: query}.to_json,
+              headers: {"Content-Type": "application/json"}
             )
           end
         end
