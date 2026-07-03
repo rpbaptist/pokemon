@@ -1,30 +1,18 @@
 class RandomPokemon
+  STATS = %i[hp attack special_attack defense special_defense speed].freeze
+  BASE_ATTRS = {trainer: nil, current_experience: 0, experience_to_level: 0}.freeze
+
   class << self
     def retrieve(pokemon = nil)
-      sample_base_pokemon = BasePokemon.all.sample
+      base_pokemon = BasePokemon.all.sample
 
-      return if sample_base_pokemon.nil?
+      return if base_pokemon.nil?
 
       level = determine_level(pokemon)
 
-      sample_base_pokemon.pokemons.create(
-        trainer: nil,
-        level: level,
-        hp: 1,
-        attack: 1,
-        special_attack: 1,
-        defense: 1,
-        special_defense: 1,
-        speed: 1,
-        current_hp: 1,
-        current_attack: 1,
-        current_special_attack: 1,
-        current_defense: 1,
-        current_special_defense: 1,
-        current_speed: 1,
-        current_experience: 0,
-        experience_to_level: 0
-      )
+      attrs = build_attrs(base_pokemon, level)
+
+      base_pokemon.pokemons.create(attrs)
     end
 
     private
@@ -35,6 +23,15 @@ class RandomPokemon
       else
         rand(1..4)
       end
+    end
+
+    def build_attrs(base_pokemon, level)
+      stats = STATS.index_with { |stat| base_pokemon.stat_at_level(stat, level) }
+      current_stats = stats.transform_keys { |stat| :"current_#{stat}" }
+
+      BASE_ATTRS.merge(level: level)
+        .merge(stats)
+        .merge(current_stats)
     end
   end
 end
