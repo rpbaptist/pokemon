@@ -4,7 +4,7 @@ class BattlesController < ApplicationController
   end
 
   def new
-    @trainer = Trainer.find_or_create_by(name: "Ash Ketchum")
+    @trainer = current_trainer
     @opponent = Pokemon.find_by(id: params[:opponent_id])
 
     @battle = Battle.new(
