@@ -73,6 +73,19 @@ RSpec.describe "Battles::CaptureAttempts", type: :request do
       end
     end
 
+    context "when the battle has already ended" do
+      let(:battle) { Battle.create!(trainer: trainer, opponent_id: opponent.id, battle_type: "pve", state: "captured") }
+
+      it "does not raise and leaves the battle captured" do
+        expect {
+          post battle_capture_attempt_path(battle)
+        }.not_to raise_error
+
+        expect(response).to have_http_status(:ok)
+        expect(battle.reload).to have_state(:captured).on(:battle)
+      end
+    end
+
     context "when the battle does not exist" do
       it "returns 404" do
         post battle_capture_attempt_path(battle_id: -1)

@@ -5,6 +5,8 @@ module Battles
     end
 
     def call
+      return unless @battle.may_capture?
+
       if successful?
         @battle.capture!
       elsif OpponentFleeAttempt.new.successful?

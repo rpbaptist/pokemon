@@ -5,7 +5,7 @@ module Battles
     end
 
     def call
-      @battle.escape! if successful?
+      @battle.escape! if @battle.may_escape? && successful?
     end
 
     private
