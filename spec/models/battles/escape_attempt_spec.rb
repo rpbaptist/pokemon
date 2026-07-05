@@ -13,7 +13,7 @@ RSpec.describe Battles::EscapeAttempt do
       it "transitions the battle to escaped" do
         described_class.new(battle).call
 
-        expect(battle.reload.state).to eq("escaped")
+        expect(battle.reload).to have_state(:escaped).on(:battle)
       end
     end
 
@@ -23,7 +23,7 @@ RSpec.describe Battles::EscapeAttempt do
       it "leaves the battle state unchanged" do
         described_class.new(battle).call
 
-        expect(battle.reload.state).to eq("start")
+        expect(battle.reload).to have_state(:start).on(:battle)
       end
     end
   end

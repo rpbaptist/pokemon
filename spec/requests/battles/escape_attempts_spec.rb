@@ -14,7 +14,7 @@ RSpec.describe "Battles::EscapeAttempts", type: :request do
         post battle_escape_attempt_path(battle)
 
         expect(response).to have_http_status(:ok)
-        expect(battle.reload.state).to eq("escaped")
+        expect(battle.reload).to have_state(:escaped).on(:battle)
       end
 
       it "renders a turbo stream announcing the escape" do
@@ -32,7 +32,7 @@ RSpec.describe "Battles::EscapeAttempts", type: :request do
         post battle_escape_attempt_path(battle)
 
         expect(response).to have_http_status(:ok)
-        expect(battle.reload.state).to eq("start")
+        expect(battle.reload).to have_state(:start).on(:battle)
       end
 
       it "renders a turbo stream announcing the failed attempt" do

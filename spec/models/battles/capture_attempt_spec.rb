@@ -13,7 +13,7 @@ RSpec.describe Battles::CaptureAttempt do
       it "transitions the battle to captured and assigns the opponent to the trainer" do
         described_class.new(battle).call
 
-        expect(battle.reload.state).to eq("captured")
+        expect(battle.reload).to have_state(:captured).on(:battle)
         expect(opponent.reload.trainer).to eq(trainer)
       end
     end
@@ -27,7 +27,7 @@ RSpec.describe Battles::CaptureAttempt do
       it "transitions the battle to fled" do
         described_class.new(battle).call
 
-        expect(battle.reload.state).to eq("fled")
+        expect(battle.reload).to have_state(:fled).on(:battle)
       end
     end
 
@@ -40,7 +40,7 @@ RSpec.describe Battles::CaptureAttempt do
       it "leaves the battle state unchanged" do
         described_class.new(battle).call
 
-        expect(battle.reload.state).to eq("start")
+        expect(battle.reload).to have_state(:start).on(:battle)
       end
     end
   end

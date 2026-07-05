@@ -14,7 +14,7 @@ RSpec.describe "Battles::CaptureAttempts", type: :request do
         post battle_capture_attempt_path(battle)
 
         expect(response).to have_http_status(:ok)
-        expect(battle.reload.state).to eq("captured")
+        expect(battle.reload).to have_state(:captured).on(:battle)
       end
 
       it "assigns the opponent to the trainer" do
@@ -41,7 +41,7 @@ RSpec.describe "Battles::CaptureAttempts", type: :request do
         post battle_capture_attempt_path(battle)
 
         expect(response).to have_http_status(:ok)
-        expect(battle.reload.state).to eq("fled")
+        expect(battle.reload).to have_state(:fled).on(:battle)
       end
 
       it "renders a turbo stream announcing the flee" do
@@ -61,7 +61,7 @@ RSpec.describe "Battles::CaptureAttempts", type: :request do
         post battle_capture_attempt_path(battle)
 
         expect(response).to have_http_status(:ok)
-        expect(battle.reload.state).to eq("start")
+        expect(battle.reload).to have_state(:start).on(:battle)
       end
 
       it "renders a turbo stream announcing the failed attempt" do
