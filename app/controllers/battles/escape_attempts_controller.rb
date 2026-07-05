@@ -3,7 +3,7 @@ class Battles::EscapeAttemptsController < ApplicationController
 
   def create
     @battle = Battle.find(params[:battle_id])
-    @escaped = EscapeAttempt.new.successful?
+    @escaped = Battles::EscapeAttempt.new.successful?
     @battle.escape! if @escaped
 
     render turbo_stream: turbo_stream.replace(

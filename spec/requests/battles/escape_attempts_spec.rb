@@ -8,7 +8,7 @@ RSpec.describe "Battles::EscapeAttempts", type: :request do
     let(:battle) { Battle.create!(trainer: trainer, opponent_id: opponent.id, battle_type: "pve") }
 
     context "when the escape succeeds" do
-      before { allow_any_instance_of(EscapeAttempt).to receive(:successful?).and_return(true) }
+      before { allow_any_instance_of(Battles::EscapeAttempt).to receive(:successful?).and_return(true) }
 
       it "transitions the battle to escaped" do
         post battle_escape_attempt_path(battle)
@@ -26,7 +26,7 @@ RSpec.describe "Battles::EscapeAttempts", type: :request do
     end
 
     context "when the escape fails" do
-      before { allow_any_instance_of(EscapeAttempt).to receive(:successful?).and_return(false) }
+      before { allow_any_instance_of(Battles::EscapeAttempt).to receive(:successful?).and_return(false) }
 
       it "leaves the battle state unchanged" do
         post battle_escape_attempt_path(battle)
