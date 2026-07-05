@@ -14,6 +14,7 @@ class Battle < ApplicationRecord
     state :start, initial: true
     state :move_selection
     state :escaped
+    state :fled
     state :captured
     state :victory
     state :defeat
@@ -21,5 +22,19 @@ class Battle < ApplicationRecord
     event :escape do
       transitions from: [:start, :move_selection], to: :escaped
     end
+
+    event :capture do
+      transitions from: [:start, :move_selection], to: :captured, after: :assign_opponent_to_trainer
+    end
+
+    event :opponent_flee do
+      transitions from: [:start, :move_selection], to: :fled
+    end
+  end
+
+  private
+
+  def assign_opponent_to_trainer
+    opponent.update!(trainer: trainer)
   end
 end

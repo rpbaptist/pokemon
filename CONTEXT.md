@@ -5,7 +5,7 @@ Domain glossary for the Pokémon battle/capture game.
 ## Language
 
 **Battle**:
-An encounter between a Trainer's active Pokémon and an Opponent, tracked through a lifecycle of states (start, move_selection, escaped, captured, victory, defeat).
+An encounter between a Trainer's active Pokémon and an Opponent, tracked through a lifecycle of states (start, move_selection, escaped, fled, captured, victory, defeat).
 _Avoid_: Fight
 
 **Encounter**:

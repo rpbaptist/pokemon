@@ -32,11 +32,71 @@ RSpec.describe Battle do
       expect { battle.escape! }.to raise_error(AASM::InvalidTransition)
     end
 
-    %w[victory defeat captured].each do |terminal_state|
+    %w[victory defeat captured fled].each do |terminal_state|
       it "cannot be called once the battle has ended in #{terminal_state}" do
         battle = battle_in(terminal_state)
 
         expect { battle.escape! }.to raise_error(AASM::InvalidTransition)
+      end
+    end
+  end
+
+  describe "#capture!" do
+    it "transitions from start to captured" do
+      battle = battle_in("start")
+
+      battle.capture!
+
+      expect(battle.state).to eq("captured")
+    end
+
+    it "transitions from move_selection to captured" do
+      battle = battle_in("move_selection")
+
+      battle.capture!
+
+      expect(battle.state).to eq("captured")
+    end
+
+    it "assigns the opponent to the trainer" do
+      battle = battle_in("start")
+
+      battle.capture!
+
+      expect(opponent.reload.trainer).to eq(trainer)
+    end
+
+    %w[escaped fled victory defeat captured].each do |terminal_state|
+      it "cannot be called once the battle has ended in #{terminal_state}" do
+        battle = battle_in(terminal_state)
+
+        expect { battle.capture! }.to raise_error(AASM::InvalidTransition)
+      end
+    end
+  end
+
+  describe "#opponent_flee!" do
+    it "transitions from start to fled" do
+      battle = battle_in("start")
+
+      battle.opponent_flee!
+
+      expect(battle.state).to eq("fled")
+    end
+
+    it "transitions from move_selection to fled" do
+      battle = battle_in("move_selection")
+
+      battle.opponent_flee!
+
+      expect(battle.state).to eq("fled")
+    end
+
+    %w[escaped fled victory defeat captured].each do |terminal_state|
+      it "cannot be called once the battle has ended in #{terminal_state}" do
+        battle = battle_in(terminal_state)
+
+        expect { battle.opponent_flee! }.to raise_error(AASM::InvalidTransition)
       end
     end
   end
