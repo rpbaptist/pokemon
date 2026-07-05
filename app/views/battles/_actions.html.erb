@@ -1,16 +1,9 @@
 <div class="card-actions">
-  <% if battle.captured? %>
-    <p>You caught it!</p>
-  <% elsif battle.escaped? %>
-    <p>You escaped!</p>
-  <% elsif battle.fled? %>
-    <p>It fled while you tried to catch it!</p>
+  <% if (message = battle_result_message(battle)) %>
+    <p><%= message %></p>
   <% else %>
-    <% if escaped == false %>
-      <p>Escape failed &mdash; try again.</p>
-    <% end %>
-    <% if local_assigns.fetch(:captured, nil) == false %>
-      <p>Capture failed &mdash; try again.</p>
+    <% if (failure_message = battle_failure_message(escaped: escaped, captured: local_assigns[:captured])) %>
+      <p><%= failure_message %></p>
     <% end %>
     <%= button_to "Escape", battle_escape_attempt_path(battle), method: :post, class: "btn btn-primary" %>
     <%= button_to "Capture", battle_capture_attempt_path(battle), method: :post, class: "btn btn-primary" %>
