@@ -3,13 +3,12 @@ class Battles::EscapeAttemptsController < ApplicationController
 
   def create
     @battle = Battle.find(params[:battle_id])
-    @escaped = Battles::EscapeAttempt.new.successful?
-    @battle.escape! if @escaped
+    Battles::EscapeAttempt.new(@battle).call
 
     render turbo_stream: turbo_stream.replace(
       ActionView::RecordIdentifier.dom_id(@battle, :actions),
       partial: "battles/actions",
-      locals: {battle: @battle, escaped: @escaped}
+      locals: {battle: @battle, escaped: @battle.escaped?}
     )
   end
 end

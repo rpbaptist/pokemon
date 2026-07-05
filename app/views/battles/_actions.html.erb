@@ -9,7 +9,7 @@
     <% if escaped == false %>
       <p>Escape failed &mdash; try again.</p>
     <% end %>
-    <% if local_assigns.fetch(:captured, nil) == false && !local_assigns.fetch(:fled, false) %>
+    <% if local_assigns.fetch(:captured, nil) == false %>
       <p>Capture failed &mdash; try again.</p>
     <% end %>
     <%= button_to "Escape", battle_escape_attempt_path(battle), method: :post, class: "btn btn-primary" %>
