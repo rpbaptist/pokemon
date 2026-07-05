@@ -22,6 +22,7 @@ RSpec.describe "Battles::EscapeAttempts", type: :request do
 
         expect(response.media_type).to eq("text/vnd.turbo-stream.html")
         expect(response.body).to include("You escaped!")
+        expect(response.body).to include("Find another Pokémon")
       end
     end
 

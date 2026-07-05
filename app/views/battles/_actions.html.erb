@@ -1,9 +1,10 @@
-<div class="card-actions">
+<div class="card-actions justify-center">
   <% if (message = battle_result_message(battle)) %>
-    <p><%= message %></p>
+    <p class="w-full"><%= message %></p>
+    <%= link_to "Find another Pokémon", new_encounter_path, class: "btn btn-primary" %>
   <% else %>
     <% if (failure_message = battle_failure_message(escaped: escaped, captured: local_assigns[:captured])) %>
-      <p><%= failure_message %></p>
+      <p class="w-full"><%= failure_message %></p>
     <% end %>
     <%= button_to "Escape", battle_escape_attempt_path(battle), method: :post, class: "btn btn-primary" %>
     <%= button_to "Capture", battle_capture_attempt_path(battle), method: :post, class: "btn btn-primary" %>

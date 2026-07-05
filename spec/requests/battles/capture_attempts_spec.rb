@@ -28,6 +28,7 @@ RSpec.describe "Battles::CaptureAttempts", type: :request do
 
         expect(response.media_type).to eq("text/vnd.turbo-stream.html")
         expect(response.body).to include("You caught it!")
+        expect(response.body).to include("Find another Pokémon")
       end
     end
 
@@ -48,6 +49,7 @@ RSpec.describe "Battles::CaptureAttempts", type: :request do
         post battle_capture_attempt_path(battle)
 
         expect(response.body).to include("It fled")
+        expect(response.body).to include("Find another Pokémon")
       end
     end
 
