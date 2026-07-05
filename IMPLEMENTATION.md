@@ -39,4 +39,11 @@ given, it should show a random pokemon of level 1-4 (i.e. treated as base level 
 may use `capture` as well.
 - [ ] When one of the Pokemon's HP is 0, the battle ends with either `victory` or `defeat`
 
+## Bonus
+
+- [ ] Capture success depends on pokemon HP:
+   - 0-30% HP: 80% kans
+   - 31-70% HP: 40% kans
+   - 71-100% HP: 20% kans
+
 
