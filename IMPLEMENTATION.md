@@ -25,9 +25,11 @@ given, it should show a random pokemon of level 1-4 (i.e. treated as base level 
 
 ## Acceptance criteria 3
 
-- [ ] Add a `capture` action in a fight with 50% success rate. Should follow the pattern of `Battles.EscapeAttempt`
-- [ ] If `capture` succeeds, `Battle.state` is recorded as `captured`
-- [ ] If `capture` fails, pokemon has 30% chance to escape. `Battle.state` is recoded as `escaped`.
+- [x] Add a `capture` action in a fight with 50% success rate. Should follow the pattern of `Battles.EscapeAttempt`
+- [x] If `capture` succeeds:
+   - `Battle.state` is recorded as `captured`
+   - `Pokemon.trainer` is set to `current_trainer`
+- [x] If `capture` fails, pokemon has 30% chance to escape. `Battle.state` needs a new status: `fled`
 
 ## Acceptance criteria 4
 

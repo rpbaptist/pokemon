@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :encounters, only: :new
   resources :battles, only: [:new, :create, :show] do
     resource :escape_attempt, only: :create, controller: "battles/escape_attempts"
+    resource :capture_attempt, only: :create, controller: "battles/capture_attempts"
   end
 end
