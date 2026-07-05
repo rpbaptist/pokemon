@@ -26,7 +26,6 @@ module PokemonApi
                 }
               GRAPHQL
             )
-            
 
             response.dig("data", "getTypeMatchup") || []
           end
